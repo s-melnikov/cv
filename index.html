@@ -1,11 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="CVBuilderApp">
 <head>
-  <meta charset="UTF-8">
-  <title>Document</title>
+  <meta charset="utf-8">
+  <title>AngularJS CV Builder</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="app/app.css">
 </head>
 <body>
-  <h1>Lorem ipsum dolor.</h1> 
-  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maxime eaque iste illo eum! Dolorum eius, porro dolor. Temporibus quidem fugiat nihil pariatur eius, ratione, distinctio autem expedita illo quae, voluptate maxime a. Dignissimos labore ducimus earum doloribus quidem perferendis, voluptate iure assumenda aut, reiciendis, cumque reprehenderit cum qui minima voluptatem numquam expedita nemo dolorum velit porro voluptatibus. Reiciendis aspernatur nostrum voluptates fugiat iste quae iure, assumenda molestias, unde beatae maxime laudantium atque tenetur doloremque voluptas totam dignissimos fuga amet perspiciatis? Voluptatum saepe sapiente debitis neque repellendus. Iste rem doloremque, molestias distinctio beatae delectus autem facere! Accusamus eveniet dolorem minima provident!</p>
+  <div ng-controller="AppController as vm">
+    <h1>{{vm.data.name}}</h1>
+  </div>
+  <script src="https://unpkg.com/angular@1.7.2/angular.min.js"></script>
+  <script src="app/app.js"></script>
 </body>
 </html>
