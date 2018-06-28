@@ -1,16 +1,68 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="CVBuilderApp">
+<html lang="en" ng-app="app">
 <head>
   <meta charset="utf-8">
   <title>AngularJS CV Builder</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="app/app.css">
 </head>
-<body>
-  <div ng-controller="AppController as vm">
-    <h1>{{vm.data.name}}</h1>
+<body ng-controller="AppController as vm" ng-cloak ng-class="vm.body_class">
+  <div class="container">
+    <hr>
+
+    <h1>{{ vm.name }}</h1>   
+    <h2>{{ vm.position }}</h2> 
+
+    <div ng-repeat="line in vm.address" class="address_lines">
+      <div class="address_line">{{ line }}</div>
+    </div>
+
+    <div ng-repeat="contact in vm.contacts" class="contacts">
+      <div class="contact">
+        <span class="title">{{ contact.title }}:</span>
+        <span class="value">{{ contact.value }}</span>
+      </div>
+    </div>
+
+    <h3>Skills</h3>
+
+    <div ng-repeat="skill in vm.skills" class="skills">
+      <div class="skill">
+        <span class="title">{{ skill.title }}</span>
+        <span class="value">{{ skill.level }}</span>
+      </div>
+    </div>
+
+    <h3>Experience</h3>
+
+    <div ng-repeat="item in vm.experience" class="experience">
+      <div class="experience_item">
+        <div class="header">
+          <span class="title">{{ item.title }}</span>
+          <span class="position">{{ item.position }}</span>
+        </div>
+        <div class="period">
+          <period start="{{ item.start }}" end="{{ item.end }}"></period>
+        </div>
+      </div>
+    </div>
+
+    <h3>Education</h3>
+
+    <div ng-repeat="item in vm.education" class="education">
+      <div class="education_item">
+        <div class="header">
+          <span class="title">{{ item.title }}</span>
+          <span class="level">{{ item.level }}</span>
+        </div>
+      </div>
+    </div>
+
   </div>
   <script src="https://unpkg.com/angular@1.7.2/angular.min.js"></script>
   <script src="app/app.js"></script>
+  <script src="app/components/logger-factory.js"></script>
+  <script src="app/components/dataservice-factory.js"></script>
+  <script src="app/components/period/period-directive.js"></script>
 </body>
 </html>

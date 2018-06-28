@@ -1,7 +1,7 @@
 {
   "name": "Melnykov Serhii",
   "position": "Front-End Developer",
-  "addres": [
+  "address": [
     "Akademika Zabolotnogo street, 2, 109",
     "Odessa, Ukraine, 65000"
   ],
@@ -28,7 +28,13 @@
     { 
       "title": "Product Company (NDA), Odessa",
       "position": "Senior Front-End Developer",
-      "period": [[7, 2017], [0, 0]],
+      "period": {
+        "start": {
+          "month": 7,
+          "year": 2017
+        },
+        "end": null
+      },
       "description": ""
     },    
     { 

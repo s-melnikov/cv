@@ -1,73 +1,39 @@
-'use strict';
-
-const SUCCESS_RESPONSE_STATUS = 200;
-
 angular
-  .module('CVBuilderApp', [])
-  .controller('AppController', AppController)
-  .factory('dataservice', dataservice)
-  .factory('logger', logger);
+  .module('app', [])
+  .controller('AppController', AppController);
 
-dataservice.$inject = ['$http', 'logger'];
-
-AppController.$inject = ['dataservice', 'logger', '$http'];
+AppController.$inject = ['dataservice', 'logger'];
 
 function AppController(dataservice, logger) {
 
   var vm = this;
-  vm.data = {};
+  vm.body_class = "preloader";
+  vm.getMonthName = getMonthName;
+  vm.getPeriodString = getPeriodString;
 
   activate();
 
   function activate() {    
-    return getData()
-      .then(() => logger.info('Activated View'));
+    getData().then(() => logger.info('Data received'));
   }
 
   function getData() {
-    return dataservice.getData()
-      .then(data => {
-        vm.data = data;
-        return vm.data;
-      })
-  }
-}
-
-function dataservice($http, logger) { 
-
-  const DATA_FILE_NAME = 'data.json';
-
-  return {
-    getData
+    return dataservice
+      .getData()
+      .then(setData);
   }
 
-  function getData() {
-    return $http.get(DATA_FILE_NAME)
-      .then(responseHandler)
-      .catch(errorHandler);
+  function setData(data) {
+    vm.body_class = "";
+    Object.assign(vm, data);
   }
 
-  function responseHandler(response) {
-    logger.info('dataservice:responseHandler(), data:', response.data);
-    return response.data;
+  function getMonthName(index) {
+    return MONTH_NAMES[index];
   }
 
-  function errorHandler(response) {  
-    const { statusText, status, xhrStatus, config: { url } } = response;
-    logger.error("dataservice:getData() error:", statusText);
-    return { statusText, status }
-  }
-}
-
-function logger() {
-
-  const info = console.log.bind(console);
-  const warn = console.warn.bind(console);
-  const error = console.error.bind(console);
-
-  return {
-    info,
-    warn,
-    error
-  }
+  function getPeriodString(array) {
+    return array ?
+      `${MONTH_NAMES[array[0]]} ${array[1]}` : 'Current'
+    }
 }
