@@ -13,6 +13,8 @@
     <h1>{{ vm.name }}</h1>   
     <h2>{{ vm.position }}</h2> 
 
+    <address></address>
+
     <div ng-repeat="line in vm.address" class="address_lines">
       <div class="address_line">{{ line }}</div>
     </div>
@@ -61,8 +63,8 @@
   </div>
   <script src="https://unpkg.com/angular@1.7.2/angular.min.js"></script>
   <script src="app/app.js"></script>
-  <script src="app/components/logger-factory.js"></script>
-  <script src="app/components/dataservice-factory.js"></script>
-  <script src="app/components/period/period-directive.js"></script>
+  <script src="app/factories/logger-factory.js"></script>
+  <script src="app/factories/dataservice-factory.js"></script>
+  <script src="app/directives/period-directive.js"></script>
 </body>
 </html>

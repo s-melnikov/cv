@@ -9,7 +9,7 @@
   function period() {
     const directive = {
       link: link,
-      templateUrl: 'app/components/period/period-directive.template.html'
+      templateUrl: 'app/directives/period-directive.html'
     };
 
     return directive;
