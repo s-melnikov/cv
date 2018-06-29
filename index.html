@@ -13,18 +13,18 @@
     <h1>{{ vm.name }}</h1>   
     <h2>{{ vm.position }}</h2> 
 
-    <address></address>
-
-    <div ng-repeat="line in vm.address" class="address_lines">
-      <div class="address_line">{{ line }}</div>
-    </div>
-
-    <div ng-repeat="contact in vm.contacts" class="contacts">
-      <div class="contact">
-        <span class="title">{{ contact.title }}:</span>
-        <span class="value">{{ contact.value }}</span>
+    <div class="address_lines">
+      <div ng-repeat="line in vm.address" class="address_line">
+        {{ line }}
       </div>
     </div>
+
+    <div class="contacts table">
+      <div ng-repeat="contact in vm.contacts" class="contact table-row">
+        <span class="title table-cell">{{ contact.title }}:</span>
+        <span class="value table-cell">{{ contact.value }}</span>
+      </div>
+    </div>    
 
     <h3>Skills</h3>
 
@@ -44,7 +44,8 @@
           <span class="position">{{ item.position }}</span>
         </div>
         <div class="period">
-          <period start="{{ item.start }}" end="{{ item.end }}"></period>
+          <span>{{ vm.getPeriodString(item.period.start) }}</span> -
+          <span>{{ vm.getPeriodString(item.period.end) }}</span>
         </div>
       </div>
     </div>
@@ -57,14 +58,22 @@
           <span class="title">{{ item.title }}</span>
           <span class="level">{{ item.level }}</span>
         </div>
+        <div class="period">
+          <span>{{ vm.getPeriodString(item.period.start) }}</span> -
+          <span>{{ vm.getPeriodString(item.period.end) }}</span>
+        </div>
       </div>
     </div>
 
   </div>
   <script src="https://unpkg.com/angular@1.7.2/angular.min.js"></script>
   <script src="app/app.js"></script>
-  <script src="app/factories/logger-factory.js"></script>
-  <script src="app/factories/dataservice-factory.js"></script>
+
+  <script src="app/services/logger-service.js"></script>
+  <script src="app/services/rest-service.js"></script>
+
   <script src="app/directives/period-directive.js"></script>
+
+  <script src="app/controllers/app-controller.js"></script>
 </body>
 </html>

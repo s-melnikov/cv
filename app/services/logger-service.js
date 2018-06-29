@@ -23,7 +23,7 @@
     }
 
     function error(text, ...rest) {
-      console.info('%c ERROR%s', 'color:#dd1144', text, ...rest);
+      console.info('%cERROR %s', 'color:#dd1144', text, ...rest);
     }
   }
 

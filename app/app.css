@@ -25,6 +25,13 @@ h2 {
   font-weight: 400;
   color: #ff9800;
 }
+h3 {
+  font-size: .9rem;
+  margin: 1rem 0 .7rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  color: #ff9800;  
+}
 hr {
   height: .2rem;
   margin: .5rem 0;
@@ -58,12 +65,30 @@ body::after {
   background: rgba(0, 0, 0, 0.05);
   animation: rotateAinimation 1s infinite;
 }
+@keyframes rotateAinimation {
+  from {
+    trandsform: rotate(0);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
 body[ng-cloak]::before,
 body[ng-cloak]::after,
 body.preloader::before,
 body.preloader::after {    
   opacity: 1;
   visibility: visible;
+}
+.table {
+  display: table;
+}
+.table-row {
+  display: table-row;
+}
+.table-cell {
+  display: table-cell;
+  padding-right: .5rem;
 }
 .container {
   border-radius: 2px;
@@ -73,11 +98,16 @@ body.preloader::after {
   margin: 0 auto;
   box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.02), -1px 2px 3px rgba(0, 0, 0, 0.02);
 }
-@keyframes rotateAinimation {
-  from {
-    trandsform: rotate(0);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.address_lines {
+  font-size: .7rem;
+  margin-bottom: 1rem;
+}
+.contacts {
+  margin-bottom: 1rem;  
+  font-size: .7rem;
+}
+.contact .title {
+  text-transform: lowercase;
+  text-align: right;
+  margin-right: .5rem;
 }

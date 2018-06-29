@@ -29,10 +29,7 @@
       "title": "Product Company (NDA), Odessa",
       "position": "Senior Front-End Developer",
       "period": {
-        "start": {
-          "month": 7,
-          "year": 2017
-        },
+        "start": { "month": 7, "year": 2017 },
         "end": null
       },
       "description": ""
@@ -40,13 +37,19 @@
     { 
       "title": "Product Company (NDA), Odessa",
       "position": "Middle Front-End Developer",
-      "period": [[0, 2014], [7, 2017]],
+      "period": {
+        "start": { "month": 0, "year": 2014 },
+        "end": { "month": 7, "year": 2017 }
+      },
       "description": ""
     },    
     { 
       "title": "Product Company (NDA), Odessa",
       "position": "Junior Front-End Developer",
-      "period": [[7, 2012], [0, 2014]],
+      "period": {
+        "start": { "month": 7, "year": 2012 },
+        "end": { "month": 0, "year": 2014 }
+      },
       "description": ""
     }
   ],
@@ -54,12 +57,18 @@
     {
       "title": "Odessa College of Transport Technologies",
       "level": "Specialist (Construction and civil engineering)",
-      "period": [[8, 2004], [5, 2007]]
+      "period": {
+        "start": { "month": 8, "year": 2004 },
+        "end": { "month": 5, "year": 2007 }
+      }
     },
     {
       "title": "Belgorod Dnestrovsky Middle School",
       "level": "",
-      "period": [[8, 1994], [5, 2004]]
+      "period": {
+        "start": { "month": 8, "year": 1994 },
+        "end": { "month": 5, "year": 2004 }
+      }
     }
   ]
 }

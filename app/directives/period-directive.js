@@ -1,6 +1,4 @@
-(() => {
-
-  const MONTH_NAMES = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'November', 'December'];
+(() => {  
 
   angular
     .module('app')
