@@ -11,12 +11,14 @@
   function restService($http, logger) {  
 
     const factory = {
-      getAppData
+      getAppData,
+      updateData
     }
 
     return factory
 
     function getAppData() {
+      logger.info('rest-service:getAppData()');
       return $http.get(DATA_FILE_NAME)
         .then(responseHandler)
         .catch(errorHandler);
@@ -30,6 +32,15 @@
     function errorHandler({ statusText }) {
       logger.error("rest-service:errorHandler()", statusText);
       return false;
+    }
+
+    function updateData(data) {
+      logger.info('rest-service:updateData()', data);
+      angular.forEach(data, (value, prop) => {
+        logger.info(`Post request to '/api/${prop}/' with data:`, value);
+        // save data to server
+        // $http.post(`/api/${prop}/`, value);
+      });      
     }
   }
 

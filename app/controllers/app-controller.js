@@ -1,6 +1,4 @@
-(() => {
-
-  const MONTH_NAMES = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'November', 'December'];
+(() => {  
 
   angular
     .module('app')
@@ -10,34 +8,33 @@
 
   function AppController(rest, log) {
 
-    var vm = this;
-    vm.isInited = false;
-    vm.getMonthName = getMonthName;
-    vm.getPeriodString = getPeriodString;
+    const ctrl = this;
+    ctrl.isInited = false;
+    ctrl.isEditing = false;
+    ctrl.toggleEditing = toggleEditing;
+    ctrl.updateData = updateData;
 
-    activate();
+    init();
 
-    function activate() {    
+    function init() {    
       rest.getAppData()
         .then(setAppData);
     }
 
     function setAppData(data) {
-      console.log(data)
       if (data) {
-        vm.isInited = true;
-        Object.assign(vm, data);
+        ctrl.isInited = true;
+        Object.assign(ctrl, data);
       }      
     }
 
-    function getMonthName(index) {
-      return MONTH_NAMES[index];
+    function updateData(data) {
+      rest.updateData(data)
     }
 
-    function getPeriodString(item) {
-      return item ?
-        `${MONTH_NAMES[item.month]} ${item.year}` : 'Current'
-      }
+    function toggleEditing() {
+      ctrl.isEditing = !ctrl.isEditing;
+    }
   }
-  
+
 })();

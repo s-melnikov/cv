@@ -6,64 +6,54 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="app/app.css">
 </head>
-<body ng-controller="AppController as vm" ng-cloak ng-class="vm.body_class">
+<body ng-controller="AppController as ctrl" ng-cloak ng-class="{ preloader: !ctrl.isInited }">
   <div class="container">
     <hr>
+ 
+    <h1>
+      <editable-field
+      ng-if="ctrl.isEditing"
+      field-value="ctrl.name"
+      on-update="ctrl.updateData({ name: value })"></editable-field>
+      <span ng-if="!ctrl.isEditing">{{ ctrl.name }}</span>
+    </h1>   
+    <h2>
+      <editable-field
+      ng-if="ctrl.isEditing"
+      field-value="ctrl.position"
+      on-update="ctrl.updateData({ position: value })"></editable-field>
+      <span ng-if="!ctrl.isEditing">{{ ctrl.position }}</span>
+    </h2> 
 
-    <h1>{{ vm.name }}</h1>   
-    <h2>{{ vm.position }}</h2> 
+    <address
+      data="ctrl.address"
+      is-editing="ctrl.isEditing"
+      on-update="ctrl.updateData({ address: value })"></address>   
 
-    <div class="address_lines">
-      <div ng-repeat="line in vm.address" class="address_line">
-        {{ line }}
-      </div>
-    </div>
+    <contacts
+      data="ctrl.contacts"
+      is-editing="ctrl.isEditing"
+      on-update="ctrl.updateData({ contacts: value })"></contacts>
 
-    <div class="contacts table">
-      <div ng-repeat="contact in vm.contacts" class="contact table-row">
-        <span class="title table-cell">{{ contact.title }}:</span>
-        <span class="value table-cell">{{ contact.value }}</span>
-      </div>
-    </div>    
+    <skills 
+      data="ctrl.skills"
+      is-editing="ctrl.isEditing"
+      on-update="ctrl.updateData({ skills: value })"></skills>
 
-    <h3>Skills</h3>
+    <experience 
+      data="ctrl.experience"
+      is-editing="ctrl.isEditing"
+      on-update="ctrl.updateData({ experience: value })"></experience> 
 
-    <div ng-repeat="skill in vm.skills" class="skills">
-      <div class="skill">
-        <span class="title">{{ skill.title }}</span>
-        <span class="value">{{ skill.level }}</span>
-      </div>
-    </div>
+    <education 
+      data="ctrl.education"
+      is-editing="ctrl.isEditing"
+      on-update="ctrl.updateData({ education: value })"></education>   
 
-    <h3>Experience</h3>
-
-    <div ng-repeat="item in vm.experience" class="experience">
-      <div class="experience_item">
-        <div class="header">
-          <span class="title">{{ item.title }}</span>
-          <span class="position">{{ item.position }}</span>
-        </div>
-        <div class="period">
-          <span>{{ vm.getPeriodString(item.period.start) }}</span> -
-          <span>{{ vm.getPeriodString(item.period.end) }}</span>
-        </div>
-      </div>
-    </div>
-
-    <h3>Education</h3>
-
-    <div ng-repeat="item in vm.education" class="education">
-      <div class="education_item">
-        <div class="header">
-          <span class="title">{{ item.title }}</span>
-          <span class="level">{{ item.level }}</span>
-        </div>
-        <div class="period">
-          <span>{{ vm.getPeriodString(item.period.start) }}</span> -
-          <span>{{ vm.getPeriodString(item.period.end) }}</span>
-        </div>
-      </div>
-    </div>
+    <hr>  
+    
+    <span ng-click="ctrl.toggleEditing()" 
+      class="icon icon-{{ ctrl.isEditing ? 'x' : 'edit' }} edit-cv"></span>
 
   </div>
   <script src="https://unpkg.com/angular@1.7.2/angular.min.js"></script>
@@ -72,8 +62,15 @@
   <script src="app/services/logger-service.js"></script>
   <script src="app/services/rest-service.js"></script>
 
-  <script src="app/directives/period-directive.js"></script>
-
   <script src="app/controllers/app-controller.js"></script>
+
+  <script src="app/components/editable-field/editable-field-component.js"></script>
+  <script src="app/components/address/address-component.js"></script>
+  <script src="app/components/contacts/contacts-component.js"></script>
+  <script src="app/components/skills/skills-component.js"></script>
+  <script src="app/components/level/level-component.js"></script>
+  <script src="app/components/experience/experience-component.js"></script>
+  <script src="app/components/education/education-component.js"></script>
+  <script src="app/components/period/period-component.js"></script>
 </body>
 </html>
